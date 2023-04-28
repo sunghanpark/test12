@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>글자수 세기</title>
+	<meta charset="UTF-8">
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 600px;
+			height: 600px;
+			border: 2px solid black;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+		textarea {
+			width: 80%;
+			height: 70%;
+			resize: none;
+			margin-bottom: 10px;
+			font-size: 18px;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+		table {
+			margin-top: 30px;
+			font-size: 18px;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 10px;
+			border: 1px solid black;
+			text-align: center;
+		}
+		p {
+			font-size: 24px;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<h1 style="font-size: 60px; font-weight: bold; text-align: center;">생기부 글자수 세기</h1>
+		<div>
+			<textarea id="input"></textarea>
+		</div>
+		<div>
+			<p>글자수(byte): <span id="byte-count">0</span></p>
+			<p>글자수: <span id="char-count">0</span></p>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>활동 종류</th>
+					<th>최대 글자수(byte)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>자율활동</td>
+					<td>1500</td>
+				</tr>
+				<tr>
+					<td>동아리활동</td>
+					<td>1500</td>
+				</tr>
+				<tr>
+					<td>진로활동</td>
+					<td>2100</td>
+				</tr>
+				<tr>
+					<td>교과세특</td>
+					<td>1500</td>
+				</tr>
+				<tr>
+					<td>개설세특</td>
+					<td>1500</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>방학아 오라!</p>
+	</div>
+
+	<script>
+		const input = document.querySelector('#input');
+		const byteCount = document.querySelector('#byte-count');
+		const charCount = document.querySelector('#char-count');
+
+		input.addEventListener('input', (e) => {
+			const text = e.target.value;
+			byteCount.textContent = new Blob([text]).size;
+			charCount.textContent = text.length;
+		});
+	</script>
+</body>
+</html>
